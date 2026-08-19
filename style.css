@@ -32,74 +32,83 @@ h2,
   font-family: var(--font-judul);
 }
 
-/* Navbar */
-.navbar-kkp {
-  background: var(--biru-navbar) !important;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  overflow: visible;
-  position: relative;
-  z-index: 10;
-  transition:
-    box-shadow 0.3s ease,
-    padding 0.3s ease;
-}
-
-.navbar-kkp.scrolled {
-  box-shadow: 0 4px 16px rgba(10, 61, 98, 0.15);
-  padding-top: 3px;
-  padding-bottom: 3px;
-}
-
-.navbar-kkp .navbar-brand img {
-  --logo-h: clamp(56px, 15vw, 90px);
-  height: var(--logo-h);
-  width: auto;
-  margin: calc(var(--logo-h) * -0.22) 0;
-}
-
-.navbar-kkp .navbar-brand {
-  font-weight: 700;
-  font-size: clamp(11px, 3vw, 13px);
-  color: var(--biru-tua);
-  line-height: 1.3;
-}
-
-.navbar-kkp .nav-link {
-  color: var(--biru-tua) !important;
-  font-weight: 600;
-}
-
-.navbar-kkp .nav-link.active {
-  text-decoration: underline;
-}
-
-.navbar-kkp .navbar-toggler {
-  border-color: var(--biru-tua);
-}
-
-.navbar-kkp .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgb%2810,61,98%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
-/* Hero */
+/* ============================================
+   HERO — latar gradasi smooth + judul digeser ke kanan
+   ============================================ */
 .hero {
   position: relative;
   border-radius: clamp(18px, 4vw, 32px);
-  padding: clamp(28px, 7vw, 60px) clamp(20px, 5vw, 45px);
+  padding: clamp(40px, 9vw, 90px) clamp(24px, 6vw, 60px);
   color: white;
   overflow: hidden;
+  min-height: clamp(220px, 34vw, 340px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+
+  background: linear-gradient(120deg, #041c33 0%, #0a3d62 38%, #0f5d7a 68%, #4fb8a6 100%);
+  background-size: 220% 220%;
+  animation: heroGeser 14s ease infinite;
+  box-shadow: 0 24px 50px -18px rgba(4, 28, 51, 0.55);
+}
+
+/* Aksen cahaya lembut biar latar ga rata polos */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   background:
-    url("IMG_2253.JPG") center/cover;
-  min-height: clamp(170px, 30vw, 260px);
+    radial-gradient(circle at 12% 20%, rgba(255, 201, 60, 0.25), transparent 42%),
+    radial-gradient(circle at 88% 82%, rgba(79, 184, 166, 0.35), transparent 45%),
+    radial-gradient(circle at 70% 15%, rgba(255, 255, 255, 0.12), transparent 40%);
+  pointer-events: none;
+}
+
+/* Ombak dekoratif tipis di bagian bawah hero */
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 90px;
+  background: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,40 C300,100 900,0 1200,60 L1200,120 L0,120 Z' fill='rgba(255,255,255,0.10)'/%3E%3C/svg%3E") bottom / cover no-repeat;
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  margin-left: auto;
 }
 
 .hero h1 {
   font-weight: 700;
-  font-size: clamp(28px, 4.5vw, 44px);
+  font-size: clamp(30px, 5vw, 48px);
   line-height: 1.15;
-  max-width: 560px;
+  margin: 0 0 10px;
   animation: munculAtas 0.7s ease both;
+  text-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+}
+
+.hero .hero-sub {
+  font-size: clamp(13px, 2.6vw, 16px);
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  animation: munculAtas 0.8s ease both;
+  animation-delay: 0.08s;
+}
+
+.hero .hero-garis {
+  width: 64px;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--kuning);
+  margin: 14px 0 0 auto;
+  animation: munculAtas 0.9s ease both;
+  animation-delay: 0.15s;
 }
 
 @keyframes munculAtas {
@@ -114,23 +123,33 @@ h2,
   }
 }
 
-.waves-deco {
-  position: absolute;
-  right: 20px;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  opacity: 0.85;
-}
+@keyframes heroGeser {
+  0% {
+    background-position: 0% 50%;
+  }
 
-.waves-deco svg {
-  width: 160px;
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @media (max-width: 700px) {
-  .waves-deco {
-    display: none;
+  .hero {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-inner {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .hero .hero-garis {
+    margin: 14px auto 0;
   }
 }
 
@@ -155,8 +174,6 @@ h2,
 }
 
 /* Media sosial */
-/* Media sosial */
-
 #media-sosial {
   position: relative;
   z-index: 30;
@@ -233,7 +250,6 @@ h2,
   border-radius: inherit;
 }
 
-/* Preview muncul di BAWAH kartu */
 .kartu-preview {
   position: absolute;
   top: calc(100% + 8px);
@@ -262,7 +278,6 @@ h2,
   pointer-events: auto;
 }
 
-/* Instagram — gradasi ungu-pink-oranye kayak icon app aslinya */
 .pill-instagram .kartu-preview .lihat {
   color: #dd2a7b !important;
 }
@@ -279,7 +294,6 @@ h2,
   --card-teks: #f8f1f4;
 }
 
-/* Facebook — biru solid khas Meta */
 .pill-facebook .kartu-preview .lihat {
   color: #1877f2 !important;
 }
@@ -289,7 +303,6 @@ h2,
   --card-teks: #ffffff;
 }
 
-/* TikTok — hitam solid kayak icon app aslinya */
 .pill-tiktok .kartu-preview .lihat {
   color: #000000 !important;
 }
@@ -299,7 +312,6 @@ h2,
   --card-teks: #fff;
 }
 
-/* YouTube — merah solid khas YouTube */
 .pill-youtube .kartu-preview .lihat {
   color: #ff0000 !important;
 }
@@ -309,7 +321,6 @@ h2,
   --card-teks: #fefcfc;
 }
 
-/* WhatsApp — hijau solid khas WhatsApp */
 .pill-whatsapp .kartu-preview .lihat {
   color: #25d366 !important;
 }
@@ -319,7 +330,6 @@ h2,
   --card-teks: #ffffff;
 }
 
-/* X (Twitter) — hitam solid khas X */
 .pill-x .kartu-preview .lihat {
   color: #000000 !important;
 }
@@ -337,7 +347,6 @@ h2,
   background: linear-gradient(150deg, #041c33, #0a3d62 55%, #0f5d7a);
 }
 
-/* Integrasi menu */
 .integrasi-wrap .section-head h2 {
   color: var(--foam);
   position: relative;
@@ -383,7 +392,6 @@ h2,
   transition: background 0.2s ease;
 }
 
-/* Matikan panah bawaan Bootstrap, kita pakai panah sendiri di kolom kanan */
 .accordion-button::after {
   display: none !important;
 }
@@ -451,7 +459,6 @@ h2,
   padding: 0;
 }
 
-/* Grid isi kategori: icon di atas, teks di bawah, tersusun ke samping */
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -498,6 +505,7 @@ h2,
   border-radius: 50%;
   display: block;
 }
+
 .menu-item-label {
   font-size: clamp(10.5px, 2.9vw, 12.5px);
   font-weight: 600;
@@ -535,7 +543,7 @@ h2,
   }
 }
 
-/* Kartu pengaduan (horizontal, 2 kolom) */
+/* Kartu pengaduan */
 .pengaduan-section {
   padding: 6px 0 6px;
 }
@@ -641,6 +649,87 @@ h2,
   }
 }
 
+/* Alamat */
+.alamat-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: clamp(20px, 5vw, 32px);
+  box-shadow: 0 10px 26px -12px rgba(10, 61, 98, 0.25);
+}
+
+/* ============================================
+   FOOTER — logo dipindah ke sini, disertai galeri foto
+   ============================================ */
+.footer-lpk {
+  position: relative;
+  overflow: hidden;
+  margin-top: 10px;
+  border-radius: clamp(18px, 4vw, 30px);
+  padding: clamp(30px, 7vw, 56px) clamp(18px, 5vw, 40px);
+  background: linear-gradient(140deg, #0a3d62, #0f5d7a 55%, #4fb8a6);
+  background-size: 200% 200%;
+  animation: heroGeser 16s ease infinite;
+  text-align: center;
+  color: #fff;
+}
+
+.footer-lpk::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 85% 10%, rgba(255, 201, 60, 0.22), transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(255, 255, 255, 0.12), transparent 45%);
+  pointer-events: none;
+}
+
+.footer-lpk-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(16px, 4vw, 26px);
+}
+
+.footer-logo {
+  height: clamp(60px, 13vw, 92px);
+  width: auto;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.25));
+  animation: munculAtas 0.7s ease both;
+}
+
+.footer-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(8px, 2.4vw, 14px);
+  max-width: 720px;
+}
+
+.footer-photo {
+  width: clamp(70px, 16vw, 108px);
+  height: clamp(70px, 16vw, 108px);
+  object-fit: cover;
+  border-radius: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 10px 22px -10px rgba(0, 0, 0, 0.4);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.footer-photo:hover {
+  transform: translateY(-6px) rotate(-1deg);
+  border-color: var(--kuning);
+}
+
+.footer-copy {
+  font-size: clamp(11.5px, 2.8vw, 13px);
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
 /* Animasi muncul pas discroll */
 .reveal {
   opacity: 0;
@@ -671,31 +760,11 @@ img {
   padding: 0 16px;
 }
 
-/* Khusus untuk HP (layar kurang dari 768px): sembunyikan pop-up/preview */
 @media (max-width: 767.98px) {
   .sosial-card .kartu-preview {
     display: none !important;
   }
 }
-
-/* Grid kartu sosmed sekarang pakai flex-wrap ukuran kecil TETAP (lihat .sosmed-item),
-   jadi ukurannya ga ikut ngegedein pas layar makin lebar */
-
-/* Mengatasi pop-up / modal / dropdown agar tidak ketimpa */
-.social-popup-content,
-.modal-content {
-  padding: 15px;
-  /* Kurangi jarak dalam pop-up */
-  border-radius: 12px;
-  /* Biar sudutnya tetap rapi dan modern */
-}
-
-/* Pastikan parent container tidak memotong pop-up (overflow hidden) */
-#media-sosial {
-  overflow: visible !important;
-}
-
-/* ===== FIX POP-UP SOSMED ===== */
 
 #media-sosial,
 #media-sosial .row,
@@ -712,45 +781,9 @@ img {
   z-index: 100;
 }
 
-.sosial-card {
-  position: relative;
-  z-index: 1;
-}
-
-.sosial-card:hover {
-  z-index: 100;
-}
-
-/* Default: pop-up di bawah */
-.kartu-preview {
-  position: absolute;
-  top: calc(100% + 8px);
-  bottom: auto;
-  left: 50%;
-  right: auto;
-  width: 220px;
-  margin-left: -110px;
-  z-index: 200;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(6px);
-  transition: 0.25s ease;
-  pointer-events: none;
-}
-
-.sosial-card:hover .kartu-preview {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-/* Semua popup dibuka ke BAWAH (seragam, ga ada yang ke atas) */
 /* ============================================
-   LAYANAN OFFLINE — bg dipudarin + animasi
-   (tempel di paling bawah style.css)
+   LAYANAN OFFLINE
    ============================================ */
-
 #layanan-offline {
   background: linear-gradient(150deg,
       rgba(10, 61, 98, 0.28),
@@ -760,7 +793,6 @@ img {
   animation: offlineGeser 10s ease infinite;
 }
 
-/* Judul & tombol accordion, sesuaikan warna biar kontras di bg terang */
 #layanan-offline .accordion-button {
   color: var(--biru-tua) !important;
 }
@@ -774,12 +806,10 @@ img {
   color: var(--biru-tua);
 }
 
-/* Ikon kategori (mask) jadi biru tua, bukan kuning */
 #layanan-offline .ikon-integrasi {
   background-color: var(--biru-tua);
 }
 
-/* Kartu accordion transparan tipis, biar nyatu sama bg pudar */
 #layanan-offline .accordion-item {
   background: rgba(255, 255, 255, 0.4) !important;
   border: 1px solid rgba(10, 61, 98, 0.15) !important;
@@ -789,7 +819,6 @@ img {
   border-color: var(--gold) !important;
 }
 
-/* Menu item layanan */
 #layanan-offline .menu-item {
   background: rgba(255, 255, 255, 0.45);
   border: 1px solid rgba(10, 61, 98, 0.12);
@@ -805,104 +834,36 @@ img {
   animation: offlineMelayang 0.6s ease;
 }
 
-/* Delay muncul bertahap tiap item (efek stagger sederhana) */
-#layanan-offline .menu-item:nth-child(1) {
-  animation-delay: 0.03s;
-}
+#layanan-offline .menu-item:nth-child(1) { animation-delay: 0.03s; }
+#layanan-offline .menu-item:nth-child(2) { animation-delay: 0.06s; }
+#layanan-offline .menu-item:nth-child(3) { animation-delay: 0.09s; }
+#layanan-offline .menu-item:nth-child(4) { animation-delay: 0.12s; }
+#layanan-offline .menu-item:nth-child(5) { animation-delay: 0.15s; }
+#layanan-offline .menu-item:nth-child(6) { animation-delay: 0.18s; }
+#layanan-offline .menu-item:nth-child(7) { animation-delay: 0.21s; }
+#layanan-offline .menu-item:nth-child(8) { animation-delay: 0.24s; }
+#layanan-offline .menu-item:nth-child(9) { animation-delay: 0.27s; }
+#layanan-offline .menu-item:nth-child(10) { animation-delay: 0.3s; }
+#layanan-offline .menu-item:nth-child(11) { animation-delay: 0.33s; }
+#layanan-offline .menu-item:nth-child(12) { animation-delay: 0.36s; }
 
-#layanan-offline .menu-item:nth-child(2) {
-  animation-delay: 0.06s;
-}
-
-#layanan-offline .menu-item:nth-child(3) {
-  animation-delay: 0.09s;
-}
-
-#layanan-offline .menu-item:nth-child(4) {
-  animation-delay: 0.12s;
-}
-
-#layanan-offline .menu-item:nth-child(5) {
-  animation-delay: 0.15s;
-}
-
-#layanan-offline .menu-item:nth-child(6) {
-  animation-delay: 0.18s;
-}
-
-#layanan-offline .menu-item:nth-child(7) {
-  animation-delay: 0.21s;
-}
-
-#layanan-offline .menu-item:nth-child(8) {
-  animation-delay: 0.24s;
-}
-
-#layanan-offline .menu-item:nth-child(9) {
-  animation-delay: 0.27s;
-}
-
-#layanan-offline .menu-item:nth-child(10) {
-  animation-delay: 0.3s;
-}
-
-#layanan-offline .menu-item:nth-child(11) {
-  animation-delay: 0.33s;
-}
-
-#layanan-offline .menu-item:nth-child(12) {
-  animation-delay: 0.36s;
-}
-
-/* Gradient bg bergerak pelan */
 @keyframes offlineGeser {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* Muncul halus pas dropdown dibuka */
 @keyframes offlineMuncul {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Efek melayang ringan pas hover */
 @keyframes offlineMelayang {
-
-  0%,
-  100% {
-    transform: translateY(-4px);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
+  0%, 100% { transform: translateY(-4px); }
+  50% { transform: translateY(-8px); }
 }
 
-/* ====== Perubahan: Integrasi Data & Judul Hero ====== */
-
-/* Judul hero "Layanan Jenis LPK Pekanbaru" dipastikan rata kiri */
-#beranda h1 {
-  text-align: left;
-}
-
-/* Semua tulisan di dalam Integrasi Data jadi abu-abu */
+/* Integrasi Data teks */
 #integrasi-data .section-head h2 {
   color: #ffe603;
 }
@@ -916,6 +877,6 @@ img {
 }
 
 #integrasi-data .jumlah-badge {
-  color: #ffd413:
+  color: #ffd413;
   opacity: 0.85;
 }
