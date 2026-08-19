@@ -243,7 +243,7 @@ h2,
   width: 220px;
   margin-left: -110px;
   background: #ffffff;
-  color: #fff;
+  color: #8080;
   border-radius: 12px;
   padding: 12px 14px;
   box-shadow: 0 14px 30px -8px rgba(0, 0, 0, 0.2);
@@ -893,4 +893,29 @@ img {
   50% {
     transform: translateY(-8px);
   }
+}
+
+/* ====== Perubahan: Integrasi Data & Judul Hero ====== */
+
+/* Judul hero "Layanan Jenis LPK Pekanbaru" dipastikan rata kiri */
+#beranda h1 {
+  text-align: left;
+}
+
+/* Semua tulisan di dalam Integrasi Data jadi abu-abu */
+#integrasi-data .section-head h2 {
+  color: #ffe603;
+}
+
+#integrasi-data .accordion-button {
+  color: #c89d0e !important;
+}
+
+#integrasi-data .menu-item-label {
+  color: #c6c6c6;
+}
+
+#integrasi-data .jumlah-badge {
+  color: #ffd413:
+  opacity: 0.85;
 }
