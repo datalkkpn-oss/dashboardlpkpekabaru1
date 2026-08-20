@@ -89,9 +89,14 @@ h2,
   padding: clamp(28px, 7vw, 60px) clamp(20px, 5vw, 45px);
   color: white;
   overflow: hidden;
-  background:
-    url("IMG_2253.JPG") center/cover;
+  background: url("IMG_2253.JPG") center/cover;
   min-height: clamp(170px, 30vw, 260px);
+  
+  /* TAMBAHKAN INI: Mengubah hero jadi flexbox agar mudah diatur ke kanan */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Posisi vertikal di tengah */
+  align-items: flex-end;   /* Memindahkan isi/teks ke sebelah kanan */
 }
 
 .hero h1 {
@@ -100,6 +105,9 @@ h2,
   line-height: 1.15;
   max-width: 560px;
   animation: munculAtas 0.7s ease both;
+  
+  /* TAMBAHKAN INI: Membuat teks di dalamnya rata kanan */
+  text-align: right;
 }
 
 @keyframes munculAtas {
