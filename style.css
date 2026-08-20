@@ -168,24 +168,16 @@ h2,
 
 /* Hero */
 
-.hero {
-
-  position: relative;
-
-  border-radius: clamp(18px, 4vw, 32px);
-
-  padding: clamp(28px, 7vw, 60px) clamp(20px, 5vw, 45px);
-
-  color: white;
-
-  overflow: hidden;
-
-  background:
-
-    url("IMG_2253.JPG") center/cover;
-
-  min-height: clamp(170px, 30vw, 260px);
-
+.hero h1 {
+  font-weight: 700;
+  font-size: clamp(28px, 4.5vw, 44px);
+  line-height: 1.15;
+  max-width: 560px;
+  animation: munculAtas 0.7s ease both;
+  
+  /* Tambahkan 2 baris ini untuk memindahkannya ke kanan */
+  text-align: right;
+  margin-left: auto; 
 }
 
 
@@ -226,7 +218,6 @@ h2,
 
   }
 
-}
 
 
 
