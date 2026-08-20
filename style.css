@@ -33,6 +33,7 @@ h2,
 }
 
 /* Hero & Logo Sejajar Kanan */
+/* Hero */
 .hero {
   position: relative;
   border-radius: clamp(18px, 4vw, 32px);
@@ -45,10 +46,10 @@ h2,
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end; /* Mengatur agar konten hero berada di sisi kanan */
+  align-items: flex-start; /* UBAH JADI INI: Supaya posisinya di sebelah kiri layar */
 }
 
-/* Kontainer pembungkus logo dan teks agar sejajar sebaris */
+/* Kontainer dalam hero (Logo di kiri, Teks di kanan) */
 .hero-content {
   display: flex;
   align-items: center;
@@ -56,7 +57,6 @@ h2,
   max-width: 750px;
 }
 
-/* Ukuran logo di dalam hero */
 .hero-logo {
   height: clamp(45px, 11vw, 75px);
   width: auto;
@@ -69,7 +69,7 @@ h2,
   font-size: clamp(24px, 4vw, 42px);
   line-height: 1.15;
   animation: munculAtas 0.7s ease both;
-  text-align: left;
+  text-align: left; /* Teks di sebelah kanan logo */
   margin: 0;
 }
 
