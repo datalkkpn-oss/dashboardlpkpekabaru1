@@ -32,46 +32,74 @@ h2,
   font-family: var(--font-judul);
 }
 
-/* 1. Kotak hero-nya di sebelah kiri layar */
+/* Navbar */
+.navbar-kkp {
+  background: var(--biru-navbar) !important;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  overflow: visible;
+  position: relative;
+  z-index: 10;
+  transition:
+    box-shadow 0.3s ease,
+    padding 0.3s ease;
+}
+
+.navbar-kkp.scrolled {
+  box-shadow: 0 4px 16px rgba(10, 61, 98, 0.15);
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.navbar-kkp .navbar-brand img {
+  --logo-h: clamp(56px, 15vw, 90px);
+  height: var(--logo-h);
+  width: auto;
+  margin: calc(var(--logo-h) * -0.22) 0;
+}
+
+.navbar-kkp .navbar-brand {
+  font-weight: 700;
+  font-size: clamp(11px, 3vw, 13px);
+  color: var(--biru-tua);
+  line-height: 1.3;
+}
+
+.navbar-kkp .nav-link {
+  color: var(--biru-tua) !important;
+  font-weight: 600;
+}
+
+.navbar-kkp .nav-link.active {
+  text-decoration: underline;
+}
+
+.navbar-kkp .navbar-toggler {
+  border-color: var(--biru-tua);
+}
+
+.navbar-kkp .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgb%2810,61,98%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Hero */
 .hero {
   position: relative;
   border-radius: clamp(18px, 4vw, 32px);
   padding: clamp(28px, 7vw, 60px) clamp(20px, 5vw, 45px);
   color: white;
   overflow: hidden;
-  background: url("IMG_2253.JPG") center/cover;
+  background:
+    url("IMG_2253.JPG") center/cover;
   min-height: clamp(170px, 30vw, 260px);
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start; /* Mengatur kotak hero agar nempel di kiri layar */
 }
 
-/* 2. Mengatur isi dalam hero agar logo dan teks sampingan */
-.hero-content {
-  display: flex;
-  align-items: center; /* Supaya logo dan teks sejajar secara vertikal di tengah */
-  gap: clamp(16px, 3vw, 24px); /* Jarak antara logo dan teks */
-  max-width: 800px;
-}
-
-/* Ukuran logo di sebelah kiri */
-.hero-logo {
-  height: clamp(50px, 12vw, 80px);
-  width: auto;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-/* Teks layanan di sebelah kanan logo */
 .hero h1 {
   font-weight: 700;
-  font-size: clamp(24px, 4vw, 42px);
+  font-size: clamp(28px, 4.5vw, 44px);
   line-height: 1.15;
+  max-width: 560px;
   animation: munculAtas 0.7s ease both;
-  text-align: left; /* Teks rata kiri */
-  margin: 0;
 }
 
 @keyframes munculAtas {
@@ -127,6 +155,8 @@ h2,
 }
 
 /* Media sosial */
+/* Media sosial */
+
 #media-sosial {
   position: relative;
   z-index: 30;
@@ -232,7 +262,7 @@ h2,
   pointer-events: auto;
 }
 
-/* Instagram */
+/* Instagram — gradasi ungu-pink-oranye kayak icon app aslinya */
 .pill-instagram .kartu-preview .lihat {
   color: #dd2a7b !important;
 }
@@ -249,7 +279,7 @@ h2,
   --card-teks: #f8f1f4;
 }
 
-/* Facebook */
+/* Facebook — biru solid khas Meta */
 .pill-facebook .kartu-preview .lihat {
   color: #1877f2 !important;
 }
@@ -259,7 +289,7 @@ h2,
   --card-teks: #ffffff;
 }
 
-/* TikTok */
+/* TikTok — hitam solid kayak icon app aslinya */
 .pill-tiktok .kartu-preview .lihat {
   color: #000000 !important;
 }
@@ -269,7 +299,7 @@ h2,
   --card-teks: #fff;
 }
 
-/* YouTube */
+/* YouTube — merah solid khas YouTube */
 .pill-youtube .kartu-preview .lihat {
   color: #ff0000 !important;
 }
@@ -279,7 +309,7 @@ h2,
   --card-teks: #fefcfc;
 }
 
-/* WhatsApp */
+/* WhatsApp — hijau solid khas WhatsApp */
 .pill-whatsapp .kartu-preview .lihat {
   color: #25d366 !important;
 }
@@ -289,7 +319,7 @@ h2,
   --card-teks: #ffffff;
 }
 
-/* X (Twitter) */
+/* X (Twitter) — hitam solid khas X */
 .pill-x .kartu-preview .lihat {
   color: #000000 !important;
 }
@@ -307,6 +337,7 @@ h2,
   background: linear-gradient(150deg, #041c33, #0a3d62 55%, #0f5d7a);
 }
 
+/* Integrasi menu */
 .integrasi-wrap .section-head h2 {
   color: var(--foam);
   position: relative;
@@ -352,6 +383,7 @@ h2,
   transition: background 0.2s ease;
 }
 
+/* Matikan panah bawaan Bootstrap, kita pakai panah sendiri di kolom kanan */
 .accordion-button::after {
   display: none !important;
 }
@@ -367,7 +399,6 @@ h2,
   justify-content: center;
   gap: 8px;
   min-width: 0;
-  font-size: clamp(12.5px, 3.4vw, 15px);
 }
 
 .accordion-btn-right {
@@ -386,6 +417,10 @@ h2,
   transform: rotate(180deg);
 }
 
+.accordion-btn-title {
+  font-size: clamp(12.5px, 3.4vw, 15px);
+}
+
 .accordion-button .ikon-integrasi {
   display: inline-block;
   width: clamp(16px, 4.5vw, 20px);
@@ -400,6 +435,11 @@ h2,
   mask-position: center;
 }
 
+.accordion-button::after {
+  filter: invert(88%) sepia(28%) saturate(1200%) hue-rotate(1deg) brightness(105%);
+  transition: transform 0.3s ease;
+}
+
 .accordion-button .jumlah-badge {
   font-size: 11px;
   font-weight: 600;
@@ -411,6 +451,7 @@ h2,
   padding: 0;
 }
 
+/* Grid isi kategori: icon di atas, teks di bawah, tersusun ke samping */
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -457,7 +498,6 @@ h2,
   border-radius: 50%;
   display: block;
 }
-
 .menu-item-label {
   font-size: clamp(10.5px, 2.9vw, 12.5px);
   font-weight: 600;
@@ -495,7 +535,7 @@ h2,
   }
 }
 
-/* Kartu pengaduan */
+/* Kartu pengaduan (horizontal, 2 kolom) */
 .pengaduan-section {
   padding: 6px 0 6px;
 }
@@ -601,6 +641,7 @@ h2,
   }
 }
 
+/* Animasi muncul pas discroll */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -630,22 +671,33 @@ img {
   padding: 0 16px;
 }
 
+/* Khusus untuk HP (layar kurang dari 768px): sembunyikan pop-up/preview */
 @media (max-width: 767.98px) {
   .sosial-card .kartu-preview {
     display: none !important;
   }
 }
 
+/* Grid kartu sosmed sekarang pakai flex-wrap ukuran kecil TETAP (lihat .sosmed-item),
+   jadi ukurannya ga ikut ngegedein pas layar makin lebar */
+
+/* Mengatasi pop-up / modal / dropdown agar tidak ketimpa */
 .social-popup-content,
 .modal-content {
   padding: 15px;
+  /* Kurangi jarak dalam pop-up */
   border-radius: 12px;
+  /* Biar sudutnya tetap rapi dan modern */
 }
 
+/* Pastikan parent container tidak memotong pop-up (overflow hidden) */
 #media-sosial {
   overflow: visible !important;
 }
 
+/* ===== FIX POP-UP SOSMED ===== */
+
+#media-sosial,
 #media-sosial .row,
 #wrapSosial>div {
   overflow: visible !important;
@@ -669,6 +721,7 @@ img {
   z-index: 100;
 }
 
+/* Default: pop-up di bawah */
 .kartu-preview {
   position: absolute;
   top: calc(100% + 8px);
@@ -692,7 +745,12 @@ img {
   pointer-events: auto;
 }
 
-/* Layanan Offline */
+/* Semua popup dibuka ke BAWAH (seragam, ga ada yang ke atas) */
+/* ============================================
+   LAYANAN OFFLINE — bg dipudarin + animasi
+   (tempel di paling bawah style.css)
+   ============================================ */
+
 #layanan-offline {
   background: linear-gradient(150deg,
       rgba(10, 61, 98, 0.28),
@@ -702,6 +760,7 @@ img {
   animation: offlineGeser 10s ease infinite;
 }
 
+/* Judul & tombol accordion, sesuaikan warna biar kontras di bg terang */
 #layanan-offline .accordion-button {
   color: var(--biru-tua) !important;
 }
@@ -715,10 +774,12 @@ img {
   color: var(--biru-tua);
 }
 
+/* Ikon kategori (mask) jadi biru tua, bukan kuning */
 #layanan-offline .ikon-integrasi {
   background-color: var(--biru-tua);
 }
 
+/* Kartu accordion transparan tipis, biar nyatu sama bg pudar */
 #layanan-offline .accordion-item {
   background: rgba(255, 255, 255, 0.4) !important;
   border: 1px solid rgba(10, 61, 98, 0.15) !important;
@@ -728,6 +789,7 @@ img {
   border-color: var(--gold) !important;
 }
 
+/* Menu item layanan */
 #layanan-offline .menu-item {
   background: rgba(255, 255, 255, 0.45);
   border: 1px solid rgba(10, 61, 98, 0.12);
@@ -743,6 +805,56 @@ img {
   animation: offlineMelayang 0.6s ease;
 }
 
+/* Delay muncul bertahap tiap item (efek stagger sederhana) */
+#layanan-offline .menu-item:nth-child(1) {
+  animation-delay: 0.03s;
+}
+
+#layanan-offline .menu-item:nth-child(2) {
+  animation-delay: 0.06s;
+}
+
+#layanan-offline .menu-item:nth-child(3) {
+  animation-delay: 0.09s;
+}
+
+#layanan-offline .menu-item:nth-child(4) {
+  animation-delay: 0.12s;
+}
+
+#layanan-offline .menu-item:nth-child(5) {
+  animation-delay: 0.15s;
+}
+
+#layanan-offline .menu-item:nth-child(6) {
+  animation-delay: 0.18s;
+}
+
+#layanan-offline .menu-item:nth-child(7) {
+  animation-delay: 0.21s;
+}
+
+#layanan-offline .menu-item:nth-child(8) {
+  animation-delay: 0.24s;
+}
+
+#layanan-offline .menu-item:nth-child(9) {
+  animation-delay: 0.27s;
+}
+
+#layanan-offline .menu-item:nth-child(10) {
+  animation-delay: 0.3s;
+}
+
+#layanan-offline .menu-item:nth-child(11) {
+  animation-delay: 0.33s;
+}
+
+#layanan-offline .menu-item:nth-child(12) {
+  animation-delay: 0.36s;
+}
+
+/* Gradient bg bergerak pelan */
 @keyframes offlineGeser {
   0% {
     background-position: 0% 50%;
@@ -757,6 +869,7 @@ img {
   }
 }
 
+/* Muncul halus pas dropdown dibuka */
 @keyframes offlineMuncul {
   from {
     opacity: 0;
@@ -769,7 +882,9 @@ img {
   }
 }
 
+/* Efek melayang ringan pas hover */
 @keyframes offlineMelayang {
+
   0%,
   100% {
     transform: translateY(-4px);
@@ -780,7 +895,14 @@ img {
   }
 }
 
-/* Integrasi Data */
+/* ====== Perubahan: Integrasi Data & Judul Hero ====== */
+
+/* Judul hero "Layanan Jenis LPK Pekanbaru" dipastikan rata kiri */
+#beranda h1 {
+  text-align: left;
+}
+
+/* Semua tulisan di dalam Integrasi Data jadi abu-abu */
 #integrasi-data .section-head h2 {
   color: #ffe603;
 }
@@ -794,6 +916,6 @@ img {
 }
 
 #integrasi-data .jumlah-badge {
-  color: #ffd413;
+  color: #ffd413:
   opacity: 0.85;
 }
