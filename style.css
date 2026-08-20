@@ -32,8 +32,7 @@ h2,
   font-family: var(--font-judul);
 }
 
-/* Hero & Logo Sejajar Kanan */
-/* Hero */
+/* 1. Kotak hero-nya di sebelah kiri layar */
 .hero {
   position: relative;
   border-radius: clamp(18px, 4vw, 32px);
@@ -46,30 +45,32 @@ h2,
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start; /* UBAH JADI INI: Supaya posisinya di sebelah kiri layar */
+  align-items: flex-start; /* Mengatur kotak hero agar nempel di kiri layar */
 }
 
-/* Kontainer dalam hero (Logo di kiri, Teks di kanan) */
+/* 2. Mengatur isi dalam hero agar logo dan teks sampingan */
 .hero-content {
   display: flex;
-  align-items: center;
-  gap: clamp(12px, 3vw, 24px);
-  max-width: 750px;
+  align-items: center; /* Supaya logo dan teks sejajar secara vertikal di tengah */
+  gap: clamp(16px, 3vw, 24px); /* Jarak antara logo dan teks */
+  max-width: 800px;
 }
 
+/* Ukuran logo di sebelah kiri */
 .hero-logo {
-  height: clamp(45px, 11vw, 75px);
+  height: clamp(50px, 12vw, 80px);
   width: auto;
   object-fit: contain;
   flex-shrink: 0;
 }
 
+/* Teks layanan di sebelah kanan logo */
 .hero h1 {
   font-weight: 700;
   font-size: clamp(24px, 4vw, 42px);
   line-height: 1.15;
   animation: munculAtas 0.7s ease both;
-  text-align: left; /* Teks di sebelah kanan logo */
+  text-align: left; /* Teks rata kiri */
   margin: 0;
 }
 
