@@ -115,9 +115,9 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Pindahkan elemen pop-up sosmed langsung ke dalam tag body utama
+    
     document.addEventListener("DOMContentLoaded", function () {
-      const socialPopup = document.querySelector('.social-popup'); // Sesuaikan class pop-up Anda
+      const socialPopup = document.querySelector('.social-popup'); 
       if (socialPopup) {
         document.body.appendChild(socialPopup);
       }
@@ -274,7 +274,7 @@
       const sm = SOSIAL_MEDIA[key];
       const kol = document.createElement("div");
       kol.className = "sosmed-item";
-      // Logo asli tiap platform (putih), biar keliatan gede & jelas di atas kartu warna
+     
       const ikonHtml = `<img src="https://cdn.simpleicons.org/${key}/ffffff" alt="${sm.label}" class="icon-badge-img">`;
       kol.innerHTML = `
 
