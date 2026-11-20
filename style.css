@@ -132,17 +132,22 @@ h2,
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(93, 151, 205, 0.55);
-    border-radius: clamp(10px, 2vw, 16px);
-    padding: clamp(10px, 2.5vw, 18px) clamp(14px, 3.5vw, 28px);
+    background: rgba(10, 61, 98, 0.55);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: clamp(10px, 2vw, 14px);
+    padding: clamp(8px, 1.8vw, 12px) clamp(12px, 2.5vw, 18px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
     animation: munculKiri 0.7s ease both;
 }
 
 .hero-logo-img {
-    height: clamp(64px, 11vw, 100px);
+    height: clamp(40px, 6.5vw, 62px);
     width: auto;
     object-fit: contain;
     display: block;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.45));
 }
 
 .hero h1 {
@@ -152,6 +157,7 @@ h2,
     line-height: 1.15;
     max-width: 560px;
     text-align: left;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
     animation: munculAtas 0.7s ease both;
 }
 
